@@ -1,2 +1,2 @@
-# zerobase_app
-A Flutter application for viewing reports detailing and recieving push notifications regarding potential user exposures to COVID-19
+# Zerobase App
+A Flutter application for viewing reports detailing and receiving push notifications regarding potential user exposures to COVID-19
