@@ -48,10 +48,13 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "app-release.apk"
+                    outputFileName = "app-${variant.getName()}.apk"
                 }
             }
         }
