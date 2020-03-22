@@ -14,10 +14,11 @@ git clone -b stable https://github.com/flutter/flutter.git
 export PATH=`pwd`/flutter/bin:$PATH
 
 flutter channel stable
-flutter doctor
-flutter build apk --release
 
+# Make gradlew executable in AppCenter
 chmod a+rx android/gradlew
+
+flutter build apk --release
 
 # copy the APK where AppCenter will find it
 mkdir -p android/app/build/outputs/apk/; mv build/app/outputs/apk/release/app-release.apk $_
