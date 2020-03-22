@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# https://buildflutter.com/deploying-flutter-apps-via-appcenter/
+# https://github.com/microsoft/appcenter/blob/master/sample-build-scripts/flutter/android-build/appcenter-post-clone.sh
 # place this script in project/android/app/
 cd ..
 # fail if any command fails
@@ -20,5 +22,5 @@ chmod a+rx android/gradlew
 
 flutter build appbundle --target-platform android-arm,android-arm64,android-x64
 
-# copy the APK where AppCenter will find it
-mkdir -p android/app/build/outputs/apk/; mv build/app/outputs/bundle/release/app-release.aab $_
+# copy the AAB where AppCenter will find it
+mkdir -p android/app/build/outputs/bundle/; mv build/app/outputs/bundle/release/app.aab $_
