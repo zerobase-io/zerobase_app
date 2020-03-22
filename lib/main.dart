@@ -39,10 +39,6 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-scanQr(BuildContext context) {
-  print('scanQr');
-}
-
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
@@ -113,12 +109,6 @@ class _HomePageState extends State<HomePage> {
             ),
           )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          scanQr(context);
-        },
-        child: Icon(Icons.camera),
       ),
     );
   }

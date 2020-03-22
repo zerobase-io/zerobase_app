@@ -19,10 +19,12 @@ class SelfReport extends StatelessWidget {
                   style: TextStyle(fontSize: 28)),
             ),
             Padding(padding: const EdgeInsets.all(16.0)),
-            Text("You've done yourself and your community a huge service. "
+            Text(
+                "You've done yourself and your community a huge service. "
                 "If you're willing, please let us know your test results so that "
                 "we can better inform your fellow community members and public "
-                "health officials about the spread of this virus.", style: TextStyle(fontSize: 16)),
+                "health officials about the spread of this virus.",
+                style: TextStyle(fontSize: 16)),
             Padding(padding: const EdgeInsets.all(8.0)),
             RaisedButton(
               child: Text("I Tested Positive", style: TextStyle(fontSize: 16)),
@@ -51,10 +53,8 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
   final coloredResultStr = new TextSpan(
       text: resultStr,
       style: TextStyle(
-          color: positiveResult
-              ? Colors.green[600]
-              : Colors.red[600],
-      fontSize: 20));
+          color: positiveResult ? Colors.green[600] : Colors.red[600],
+          fontSize: 20));
 
   showDialog(
     context: context,
@@ -63,15 +63,13 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
       return AlertDialog(
         title: new Text("Just To Confirm..."),
         content: RichText(
-          text: TextSpan(
-            style: TextStyle(fontSize: 18, color: Colors.black),
-            children: <TextSpan>[
+            text: TextSpan(
+                style: TextStyle(fontSize: 18, color: Colors.black),
+                children: <TextSpan>[
               TextSpan(text: "You tested "),
               coloredResultStr,
               TextSpan(text: ", correct?")
-            ]
-          )
-        ),
+            ])),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
           new RaisedButton(
@@ -80,7 +78,8 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
                     style: TextStyle(fontSize: 16, color: Colors.black),
                     children: <TextSpan>[
                   TextSpan(
-                      text: "YES", style: TextStyle(color: Colors.green[600], fontSize: 20)),
+                      text: "YES",
+                      style: TextStyle(color: Colors.green[600], fontSize: 20)),
                   TextSpan(text: ", I tested "),
                   coloredResultStr,
                 ])),
@@ -97,7 +96,8 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
                     style: TextStyle(fontSize: 16, color: Colors.black),
                     children: <TextSpan>[
                   new TextSpan(
-                      text: "NO", style: TextStyle(color: Colors.red[600], fontSize: 20)),
+                      text: "NO",
+                      style: TextStyle(color: Colors.red[600], fontSize: 20)),
                   new TextSpan(text: ", let me change my answer")
                 ])),
             onPressed: () {
