@@ -20,7 +20,7 @@ flutter channel stable
 # Make gradlew executable in AppCenter
 chmod a+rx android/gradlew
 
-flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+flutter build apk --release
 
 # copy the AAB where AppCenter will find it
 mkdir -p android/app/build/outputs/apk/; mv build/app/outputs/apk/release/app-release.apk $_
