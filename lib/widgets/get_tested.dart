@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'zerobase_app_bar.dart';
 
 class GetTested extends StatelessWidget {
   static final routeName = '/get_tested';
+  static const testingInstructionsUrl =
+      "https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/testing.html";
 
   @override
   Widget build(BuildContext context) {
     const bodyTextStyle = TextStyle(fontSize: 18);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("SARS-COV-2 Testing Instructions"),
+      appBar: ZerobaseAppBar(
+        title: "Testing Instructions",
       ),
       body: Center(
         child: Padding(
@@ -29,7 +34,7 @@ class GetTested extends StatelessWidget {
             Padding(padding: const EdgeInsets.all(8)),
             Text(
                 "It is imperative to the health of your community and the world "
-                "that you get tested for SARS-COV-2 as soon as possible.",
+                "that you get tested for SARS-CoV-2 as soon as possible.",
                 style: bodyTextStyle),
             Padding(padding: const EdgeInsets.all(8)),
             Text(
@@ -38,15 +43,25 @@ class GetTested extends StatelessWidget {
                 style: bodyTextStyle),
             Padding(padding: const EdgeInsets.all(8)),
             RaisedButton(
-              child: Text("Find Testing Site", style: bodyTextStyle,),
+              child: Text(
+                "Testing Instructions",
+                style: bodyTextStyle,
+              ),
               onPressed: () {
-                // Link off to appropriate site
-                print("Find Testing Site()");
+                goToTestingInstructions();
               },
             )
           ]),
         ),
       ),
     );
+  }
+
+  static goToTestingInstructions() async {
+    if (await canLaunch(testingInstructionsUrl)) {
+      await launch(testingInstructionsUrl);
+    } else {
+      print("Couldn't launch browser to show self-isolation instructions.");
+    }
   }
 }

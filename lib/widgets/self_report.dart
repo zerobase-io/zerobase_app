@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../todo.dart';
+import 'zerobase_app_bar.dart';
+
 class SelfReport extends StatelessWidget {
   static final routeName = "self_report";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("SARS-COV-2 Testing Self-Reporting"),
+      appBar: ZerobaseAppBar(
+        title: "Testing Self-Reporting",
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -24,23 +27,27 @@ class SelfReport extends StatelessWidget {
                 "If you're willing, please let us know your test results so that "
                 "we can better inform your fellow community members and public "
                 "health officials about the spread of this virus.",
-                style: TextStyle(fontSize: 16)),
+                style: TextStyle(fontSize: 18)),
             Padding(padding: const EdgeInsets.all(8.0)),
-            RaisedButton(
-              child: Text("I Tested Positive", style: TextStyle(fontSize: 16)),
-              onPressed: () {
-                confirmTestResult(context, true);
-              },
-              color: Colors.green[300],
-            ),
-            Padding(padding: const EdgeInsets.all(8.0)),
-            RaisedButton(
-              child: Text("I Tested Negative", style: TextStyle(fontSize: 16)),
-              onPressed: () {
-                confirmTestResult(context, false);
-              },
-              color: Colors.red[300],
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("I Tested Positive", style: TextStyle(fontSize: 18)),
+                  onPressed: () {
+                    confirmTestResult(context, true);
+                  },
+                  color: Colors.green[300],
+                ),
+                RaisedButton(
+                  child: Text("I Tested Negative", style: TextStyle(fontSize: 18)),
+                  onPressed: () {
+                    confirmTestResult(context, false);
+                  },
+                  color: Colors.red[300],
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -50,7 +57,7 @@ class SelfReport extends StatelessWidget {
 
 void confirmTestResult(BuildContext context, bool positiveResult) {
   final resultStr = positiveResult ? "POSITIVE" : "NEGATIVE";
-  final coloredResultStr = new TextSpan(
+  final coloredResultStr = TextSpan(
       text: resultStr,
       style: TextStyle(
           color: positiveResult ? Colors.green[600] : Colors.red[600],
@@ -61,7 +68,7 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
     builder: (BuildContext context) {
       // return object of type Dialog
       return AlertDialog(
-        title: new Text("Just To Confirm..."),
+        title: Text("Just To Confirm..."),
         content: RichText(
             text: TextSpan(
                 style: TextStyle(fontSize: 18, color: Colors.black),
@@ -72,7 +79,7 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
             ])),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
-          new RaisedButton(
+          RaisedButton(
             child: RichText(
                 text: TextSpan(
                     style: TextStyle(fontSize: 16, color: Colors.black),
@@ -90,15 +97,15 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
               Navigator.of(context).pop();
             },
           ),
-          new RaisedButton(
+          RaisedButton(
             child: RichText(
                 text: TextSpan(
                     style: TextStyle(fontSize: 16, color: Colors.black),
                     children: <TextSpan>[
-                  new TextSpan(
+                  TextSpan(
                       text: "NO",
                       style: TextStyle(color: Colors.red[600], fontSize: 20)),
-                  new TextSpan(text: ", let me change my answer")
+                  TextSpan(text: ", let me change my answer")
                 ])),
             onPressed: () {
               Navigator.of(context).pop();
@@ -111,9 +118,9 @@ void confirmTestResult(BuildContext context, bool positiveResult) {
 }
 
 void confirmedTestedPositive() {
-  print("Confirmed positive");
+  TODO("Confirmed positive");
 }
 
 void confirmedTestedNegative() {
-  print("Confirmed negative");
+  TODO("Confirmed negative");
 }
